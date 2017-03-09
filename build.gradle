@@ -27,8 +27,8 @@ repositories {
 
 
 dependencies {
-	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.2.0')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
