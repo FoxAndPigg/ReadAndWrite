@@ -2,6 +2,8 @@ package org.gosky.web;
 
 import org.gosky.domain.User;
 import org.gosky.domain.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,8 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-//    static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
+    private final static Logger logger = LoggerFactory.getLogger(UserController.class);
+    //    static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
     @Autowired
     private UserRepository userRepository;
 
@@ -48,7 +51,7 @@ public class UserController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String postUser(@ModelAttribute User user) {
-        System.out.println(user.toString());
+        logger.info(user.toString());
         userRepository.save(user);
         return "success";
     }
